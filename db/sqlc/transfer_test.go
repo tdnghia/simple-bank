@@ -10,8 +10,8 @@ import (
 )
 
 func createRandomFromToAccounts(t *testing.T) (Account, Account) {
-	fromAccount := CreateRandomAccount(t)
-	toAccount := CreateRandomAccount(t)
+	fromAccount := createRandomAccount(t)
+	toAccount := createRandomAccount(t)
 
 	return fromAccount, toAccount
 }

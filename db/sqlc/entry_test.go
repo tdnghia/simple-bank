@@ -10,7 +10,7 @@ import (
 )
 
 func createRandomAccountAndEntry(t *testing.T) (Account, Entry) {
-	account := CreateRandomAccount(t)
+	account := createRandomAccount(t)
 
 	entry := createRandomEntry(t, account)
 
@@ -54,7 +54,7 @@ func TestGetEntry(t *testing.T) {
 }
 
 func TestListEntries(t *testing.T) {
-	account := CreateRandomAccount(t)
+	account := createRandomAccount(t)
 
 	for range 10 {
 		createRandomEntry(t, account)

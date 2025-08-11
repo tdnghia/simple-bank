@@ -10,7 +10,7 @@ import (
 	"github.com/tdnghia/simple-bank/util"
 )
 
-func CreateRandomAccount(t *testing.T) Account {
+func createRandomAccount(t *testing.T) Account {
 	arg := CreateAccountParams{
 		Owner:    util.RandomOnwer(),
 		Balance:  util.RandomMoney(),
@@ -32,11 +32,11 @@ func CreateRandomAccount(t *testing.T) Account {
 }
 
 func TestCreateAccount(t *testing.T) {
-	CreateRandomAccount(t)
+	createRandomAccount(t)
 }
 
 func TestGetAccount(t *testing.T) {
-	account := CreateRandomAccount(t)
+	account := createRandomAccount(t)
 
 	actualAccount, err := testQueries.GetAccount(context.Background(), account.ID)
 
@@ -51,7 +51,7 @@ func TestGetAccount(t *testing.T) {
 }
 
 func TestUpdateAccount(t *testing.T) {
-	account := CreateRandomAccount(t)
+	account := createRandomAccount(t)
 
 	arg := UpdateAccountParams{
 		ID:      account.ID,
@@ -68,7 +68,7 @@ func TestUpdateAccount(t *testing.T) {
 }
 
 func TestDeleteAccount(t *testing.T) {
-	account := CreateRandomAccount(t)
+	account := createRandomAccount(t)
 
 	err := testQueries.DeleteAccount(context.Background(), account.ID)
 
@@ -82,7 +82,7 @@ func TestDeleteAccount(t *testing.T) {
 
 func TestListAccount(t *testing.T) {
 	for range 10 {
-		CreateRandomAccount(t)
+		createRandomAccount(t)
 	}
 
 	arg := ListAccountsParams{
