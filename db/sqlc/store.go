@@ -97,12 +97,12 @@ func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (Trans
 		// between account A <-> account B
 		// e.g: 1 transfer from A to B and 1 transfer from B to A at the same time
 		if arg.FromAccountId < arg.ToAccountID {
-			addMoney(ctx, q, arg.FromAccountId, -arg.Amount, arg.ToAccountID, arg.Amount)
+			result.FromAccount, result.ToAccount, err = addMoney(ctx, q, arg.FromAccountId, -arg.Amount, arg.ToAccountID, arg.Amount)
 		} else {
-			addMoney(ctx, q, arg.ToAccountID, arg.Amount, arg.FromAccountId, -arg.Amount)
+			result.ToAccount, result.FromAccount, err = addMoney(ctx, q, arg.ToAccountID, arg.Amount, arg.FromAccountId, -arg.Amount)
 		}
 
-		return nil
+		return err
 	})
 
 	return result, err
