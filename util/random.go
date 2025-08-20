@@ -32,7 +32,7 @@ func RandomString(n int) string {
 }
 
 // Generate a random owner
-func RandomOnwer() string {
+func RandomOwner() string {
 	return RandomString(6)
 }
 
