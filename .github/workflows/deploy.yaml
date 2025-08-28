@@ -9,6 +9,10 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write    # Needed for requesting the JWT token
+      contents: read     # Usually required to checkout code
     
     steps:
       - name: Checkout repo
