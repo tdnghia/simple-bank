@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-bank-api-deployment
+  labels:
+    app: simple-bank-api
+spec:
+  replicas: 1 # number of pods that we want to run with the same teplate
+  selector: # find the pods
+    matchLabels:
+      app: simple-bank-api # all pods that have this label will be managed by this deployment
+  template:
+    metadata:
+      labels:
+        app: simple-bank-api
+    spec:
+      containers:
+      - name: simple-bank-api
+        image: 098383148507.dkr.ecr.ap-southeast-1.amazonaws.com/simple-bank:latest
+        imagePullPolicy: always
+        ports:
+        - containerPort: 8080
